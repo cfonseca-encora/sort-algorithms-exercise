@@ -1,15 +1,14 @@
 package training.algorithms;
 
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.stream.Stream;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class Student {
     String lastName;
@@ -53,7 +52,7 @@ class StudentComparator implements Comparator<Student> {
 
 
 public class StabilityTest {
-    private Student[] inputArray = {
+    private final Student[] inputArray = {
             new Student("Gomez", "Karen", 1000),
             new Student("Tammi", "Frank", 1000),
             new Student("Robinson", "Aura", 1000),
@@ -133,6 +132,6 @@ public class StabilityTest {
 
     static Stream<Sorter> stableSorterProvider() {
         // Test all the algorithms it is expected to fail with BubbleSort and QuickSort
-        return Stream.of(new InsertionSort(), new BubbleSort(), new QuickSort(), new MergeSort());
+        return Stream.of(new InsertionSort(), new BubbleSort(), new MergeSort()/*, new QuickSort()*/);
     }
 }
